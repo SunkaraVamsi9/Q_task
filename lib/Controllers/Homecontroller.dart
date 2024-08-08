@@ -16,7 +16,7 @@ List list=[];
   if(box.containsKey("Todolist")){
     list=box.get("Todolist");
   for(var dt in list){
-    if(dt["title"]==title){
+    if(dt["title"]==title.trim()){
     getController.data=[dt];
     i++;
     }
@@ -38,16 +38,16 @@ create(List data, bool edit){
 for(int i=0;i<list.length;i++)
 if(list[i]["title"]==data[0].text){
   //list.remove(dt);
-list[i]={"title":data[0].text, "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)};
+list[i]={"title":data[0].text.toString().trim(), "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)};
 }
 }
 else{
-list.add({"title":data[0].text, "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)});
+list.add({"title":data[0].text.toString().trim(), "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)});
 box.put("Todolist",list);
 }
   }
 else{
-list.add({"title":data[0].text, "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)});
+list.add({"title":data[0].text.toString().trim(), "description":data[1].text, "priority":int.parse(data[2].text),"due_date":DateTime.parse(data[3].text)});
 box.put("Todolist",list);
 getController.data=list;
 }}
@@ -56,7 +56,7 @@ List list=[];
   if(box.containsKey("Todolist")){
     list=box.get("Todolist");
     for(int i=0;i<list.length;i++){
-      if(list[i]["title"]==title){
+      if(list[i]["title"]==title.trim()){
         list.removeAt(i);
       }
     getController.data=list;
